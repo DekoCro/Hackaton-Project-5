@@ -4,7 +4,7 @@ import './index.scss';
 import './index.html';
 import Flights from './components/Flights';
 import Select from './components/Select';
-import {BrowserRouter, Route,Link,Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 
 export default class App extends Component {
     constructor(props) {

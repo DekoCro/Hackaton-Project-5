@@ -25,18 +25,24 @@ export default class Flights extends Component {
     }
     render() {
         let content = "";
+        let msg = "";
         document.querySelector('.loader').classList.add('hidden');
         console.log(this.state.items)
         if(this.state.isLoaded){
+            if(!this.state.items.length) {
+                msg = "Sorry, no flights avaliable at the moment!";
+            } else {
+                msg = "List of flights:";
+            }
             let flights = [];
             this.state.items.forEach(item => {
                 flights.push(
                     <div className="card-body" key={item.id}>
-                    <h1>From: {item.cityFrom}</h1>
-                    <h4>Departure Time: {DateTime.fromMillis(item.dTime * 1000).toFormat('hh:mm')}</h4>
-                    <h1>To: {item.cityTo}</h1>
-                    <h4>Arrival Time: {DateTime.fromMillis(item.aTime * 1000).toFormat('hh:mm')}</h4>
-                    <h3>Flight price: {item.price} Euros</h3>
+                        <h1>From: {item.cityFrom}</h1>
+                        <h4>Departure Time: {DateTime.fromMillis(item.dTime * 1000).toFormat('hh:mm')}</h4>
+                        <h1>To: {item.cityTo}</h1>
+                        <h4>Arrival Time: {DateTime.fromMillis(item.aTime * 1000).toFormat('hh:mm')}</h4>
+                        <h3>Flight price: {item.price} Euros</h3>
                     </div>
                 )
             });
@@ -46,6 +52,7 @@ export default class Flights extends Component {
         }
         return (
             <div>
+                <h3 className="avaliable">{msg}</h3>
                 {content}
             </div>
         );

@@ -25,7 +25,6 @@ export default class Select extends Component {
         this.setState({
             to : event.target.value
         })
-       
     }
 
     handleSubmit = () => {
@@ -36,25 +35,27 @@ export default class Select extends Component {
         return(
             <div>
                 <label htmlFor="">Select your departure city:</label>
-               <select id="depart" name="depart" onChange={this.handleFrom}>
-                  <option value="select">Departure City</option>
-                  <option value="PRG">Prague</option>
-                  <option value="BER">Berlin</option>
-                  <option value="WAW">Warsaw</option>
-                  <option value="PED">Pardubice</option>
-               </select>
-               <br />
-               <label htmlFor="">Select your arrival city:</label><br />
-               <select id="arrival" name="arrival" onChange={this.handleTo}>
-                <option value="select">Arrival City</option>
-                  <option value="VAL">Valencia</option>
-                  <option value="BCN">Barcelona</option>
-                  <option value="MAD">Madrid</option>
-                  <option value="MIL">Milano</option>
-                  <option value="ATH">Athens</option>
-               </select>
-               <button value="search" type="submit" onClick={this.handleSubmit}>Search</button>
-           </div>
+                <select id="depart" name="depart" onChange={this.handleFrom}>
+                    <option value="select">Departure City</option>
+                    <option value="PRG">Prague</option>
+                    <option value="BER">Berlin</option>
+                    <option value="WAW">Warsaw</option>
+                    <option value="PED">Pardubice</option>
+                </select>
+                <br />
+                <label htmlFor="">Select your destionation:</label>
+                <select id="arrival" name="arrival" onChange={this.handleTo}>
+                    <option value="select">Destination</option>
+                    <option value="VAL">Valencia</option>
+                    <option value="BCN">Barcelona</option>
+                    <option value="MAD">Madrid</option>
+                    <option value="MIL">Milano</option>
+                    <option value="ATH">Athens</option>
+                </select>
+                <br />
+                <button value="search" type="submit" onClick={this.handleSubmit}>Search for flights:</button>
+
+            </div>
         )
     }
 }
