@@ -25,6 +25,7 @@ export default class Flights extends Component {
     }
     render() {
         let content = "";
+        document.querySelector('.loader').classList.add('hidden');
         console.log(this.state.items)
         if(this.state.isLoaded){
             let flights = [];
@@ -40,8 +41,8 @@ export default class Flights extends Component {
                 )
             });
             content = flights;           
-        }else {
-            content = "Loading!";
+        } else {
+            document.querySelector('.loader').classList.remove('hidden');
         }
         return (
             <div>
