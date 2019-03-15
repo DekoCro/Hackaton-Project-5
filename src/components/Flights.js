@@ -32,9 +32,9 @@ export default class Flights extends Component {
                 flights.push(
                     <div className="card-body" key={item.id}>
                     <h1>From: {item.cityFrom}</h1>
-                    <h4>Departure Time:{DateTime.fromMillis(item.dTime * 1000).toFormat('hh:mm')}</h4>
+                    <h4>Departure Time: {DateTime.fromMillis(item.dTime * 1000).toFormat('hh:mm')}</h4>
                     <h1>To: {item.cityTo}</h1>
-                    <h4>Arrival Time:{DateTime.fromMillis(item.aTime * 1000).toFormat('hh:mm')}</h4>
+                    <h4>Arrival Time: {DateTime.fromMillis(item.aTime * 1000).toFormat('hh:mm')}</h4>
                     <h3>Flight price: {item.price} Euros</h3>
                     </div>
                 )
