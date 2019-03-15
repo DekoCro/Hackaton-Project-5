@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import {DateTime} from 'luxon';
 
 
 export default class Flights extends Component {
@@ -30,7 +31,11 @@ export default class Flights extends Component {
             this.state.items.forEach(item => {
                 flights.push(
                     <div className="card-body" key={item.id}>
-                    <h1>{item.price}</h1>
+                    <h1>From: {item.cityFrom}</h1>
+                    <h4>Departure Time:{DateTime.fromMillis(item.dTime * 1000).toFormat('hh:mm')}</h4>
+                    <h1>To: {item.cityTo}</h1>
+                    <h4>Arrival Time:{DateTime.fromMillis(item.aTime * 1000).toFormat('hh:mm')}</h4>
+                    <h3>Flight price: {item.price} Euros</h3>
                     </div>
                 )
             });
