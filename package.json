@@ -25,6 +25,8 @@
     "webpack-cli": "^3.2.3"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "luxon": "^1.11.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   }
