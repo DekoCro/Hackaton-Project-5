@@ -9,7 +9,8 @@ export default class Select extends Component {
         super(props);
         this.state = {
             from: null,
-            to: null
+            to: null,
+            direct: false
         }
     }
 
@@ -20,6 +21,7 @@ export default class Select extends Component {
         })
         this.props.onSelect(event.target.value, this.state.to)
     }
+
     handleTo = (event) => {
         console.log(event.target.value);
         this.setState({
@@ -27,8 +29,14 @@ export default class Select extends Component {
         })
     }
 
+    handleDirect = () => {
+        this.setState({
+            direct: !this.state.direct
+        })
+    }
+
     handleSubmit = () => {
-        this.props.onSelect(this.state.from, this.state.to)
+        this.props.onSelect(this.state.from, this.state.to, this.state.direct)
     }
     
     render() {
@@ -53,6 +61,7 @@ export default class Select extends Component {
                     <option value="ATH">Athens</option>
                 </select>
                 <br />
+                <input type="checkbox" value="direct" id="direct" onClick={this.handleDirect} /> Direct flights only <br />
                 <button value="search" type="submit" onClick={this.handleSubmit}>Search for flights:</button>
 
             </div>

@@ -16,14 +16,23 @@ export default class Flights extends Component {
     componentDidMount() {
         axios.get(`https://api.skypicker.com/flights?flyFrom=${this.props.from}&to=${this.props.to}&dateFrom=16/03/2019&dateTo=17/03/2019&limit=5&partner=picky`)
         .then(response => {
-            this.setState({
-                isLoaded: true,
-                items: response.data.data
-            })
+            if(this.props.direct === false) {
+                this.setState({
+                    isLoaded: true,
+                    items: response.data.data
+                })
+            } else {
+                this.setState({
+                    isLoaded: true,
+                    items: response.data.data
+                })
+            }
+            
         })
         .catch(error => console.log(error))
     }
     render() {
+        let items = this.props.direct ? this.state.items.filter(item => item.route.length === 1) : this.state.item;
         let content = "";
         let msg = "";
         document.querySelector('.loader').classList.add('hidden');
@@ -35,7 +44,7 @@ export default class Flights extends Component {
                 msg = "List of flights:";
             }
             let flights = [];
-            this.state.items.forEach(item => {
+            items.forEach(item => {
                 flights.push(
                     <div className="card-body" key={item.id}>
                         <h1>From: {item.cityFrom}</h1>

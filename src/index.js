@@ -11,13 +11,15 @@ export default class App extends Component {
         super(props);
         this.state = {
             from: null,
-            to: null
+            to: null, 
+            direct: false
         }
     }
-    handleSelect = (from, to) => {
+    handleSelect = (from, to, direct) => {
         this.setState({
             from : from,
-            to: to
+            to: to,
+            direct: direct
         })
     }
 
@@ -26,7 +28,7 @@ export default class App extends Component {
         return (
             <div>
                 <Select  onSelect={this.handleSelect} />
-                {this.state.from && this.state.to && <Flights from={this.state.from} to={this.state.to} />}
+                {this.state.from && this.state.to && <Flights from={this.state.from} to={this.state.to}  direct={this.state.direct} />}
             </div>
         )
     }
