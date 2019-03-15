@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import {DateTime} from 'luxon';
-
+import Select from './Select';
 
 export default class Flights extends Component {
     constructor(props) {
@@ -14,10 +14,10 @@ export default class Flights extends Component {
         }
     }
     componentDidMount() {
-        axios.get(`https://api.skypicker.com/flights?flyFrom=PRG&to=VLC&dateFrom=16/03/2019&dateTo=17/03/2019&limit=5&partner=picky`)
+        axios.get(`https://api.skypicker.com/flights?flyFrom=${this.props.from}&to=${this.props.to}&dateFrom=16/03/2019&dateTo=17/03/2019&limit=5&partner=picky`)
         .then(response => {
             this.setState({
-                isLoaded:true,
+                isLoaded: true,
                 items: response.data.data
             })
         })
